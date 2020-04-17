@@ -1,0 +1,28 @@
+- @page_title = "収入科目一覧"
+%h1= @page_title
+= link_to "収入科目の新規登録", :new_income
+%h2
+= link_to "topへ", :root
+%h3= "合計金額#{@goukei}円"
+
+%h4 収入割合
+= pie_chart (@incomes_chart)
+
+- if @incomes.present?
+  %table
+    %thead
+      %tr
+        %th カテゴリー
+        %th 日付
+        %th 価格
+    %tbody
+      - @incomes.each do |income|
+        %tr
+          %td= income.name
+          %td= income.year_month
+          %td= income.value
+          %td
+            = link_to "編集", [:edit, income]
+            = link_to "削除", income, method: :delete
+- else
+  %p 登録されている収入科目がありません。

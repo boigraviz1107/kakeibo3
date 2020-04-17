@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %title ChatSpace
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header.header
+      .header__title
+      .header__right
+        - if user_signed_in?
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__right--btn"
+        - else
+    = yield

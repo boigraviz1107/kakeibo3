@@ -1,0 +1,30 @@
+- @page_title = "支出科目一覧"
+%h1= @page_title
+= link_to "支出科目の新規登録", :new_spending
+%h2
+= link_to "topへ", :root
+%h3= "合計金額#{@goukei}円"
+
+%h4 支出割合
+= pie_chart (@spendings_chart)
+
+
+
+- if @spendings.present?
+  %table
+    %thead
+      %tr
+        %th カテゴリー
+        %th 日付
+        %th 価格
+    %tbody
+      - @spendings.each do |spending|
+        %tr
+          %td= spending.name
+          %td= spending.year_month
+          %td= spending.value
+          %td
+            = link_to "編集", [:edit, spending]
+            = link_to "削除", spending, method: :delete
+- else
+  %p 登録されている収入科目がありません。

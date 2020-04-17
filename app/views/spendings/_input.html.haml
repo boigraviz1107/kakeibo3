@@ -1,0 +1,16 @@
+%h3 支出科目の詳細
+= link_to "支出科目一覧に戻る", :spendings
+%table
+  %tr
+    %th
+    = form.label :name, "カテゴリー" 
+    %td
+    = form.text_field :name
+    %th
+    = form.label :year_month, "年月"
+    %td
+    = form.date_select :year_month
+    %th
+    = form.label :value, "価格"
+    %td
+    = form.number_field :value
