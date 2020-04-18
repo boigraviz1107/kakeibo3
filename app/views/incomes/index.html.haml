@@ -6,14 +6,10 @@
 %h3= "合計金額#{@goukei}円"
 
 %h4
--@sums.each do |sum|
-  .contents
-    .contents_name
-      =sum
-    .contents_year_month
-      =sum.year_month
-    .contents_value
-      =sum.value
+= @sums.each_with_index do |x, i|
+  = "#{i}: #{x}"
+
+
  
     
 
@@ -33,7 +29,7 @@
         %tr
           %td= income.name
           %td= income.year_month
-          %td= income.sum
+          %td= income.value
           %td
             = link_to "編集", [:edit, income]
             = link_to "削除", income, method: :delete
