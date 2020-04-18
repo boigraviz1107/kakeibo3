@@ -1,8 +1,8 @@
 class SpendingsController < ApplicationController
   def index
-    @spendings = Spending.order(year_month: :asc)
-    @goukei = Spending.all.sum(:value)
-    @spendings_chart = Spending.group(:name).sum(:value)
+    @spendings = Spending.where(user_id: current_user.id).order(year_month: :asc)
+    @goukei = @spendings.sum(:value)
+    @spendings_chart = @spendings.group(:name).sum(:value)
 	end
  
   def show

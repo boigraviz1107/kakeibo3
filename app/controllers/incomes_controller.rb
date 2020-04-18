@@ -1,10 +1,9 @@
 class IncomesController < ApplicationController
   def index
-    @incomes = Income.order(year_month: :asc)
-    @goukei = Income.all.sum(:value)
-    @incomes_chart = Income.group(:name).sum(:value)
-    @sums =  Income.order(year_month: :asc).group_by{|income| income.year_month.to_date.strftime('%m')}
-       #  gon.incomes_group_by = @sums
+    @incomes = Income.where(user_id: current_user.id).order(year_month: :asc)
+    @goukei = @incomes.sum(:value)
+    @incomes_chart = @incomes.group(:name).sum(:value)
+    @sums =  @incomes.group(:year_month)
    end
   
    def show
@@ -13,7 +12,7 @@ class IncomesController < ApplicationController
    end
   
    def new
-     @income = Income.new.
+     @income = Income.new
    end
   
    def edit
@@ -54,7 +53,7 @@ class IncomesController < ApplicationController
  
  
    def post_incomes
-     params.require(:income).permit(:name, :year_month, :value)
+     params.require(:income).permit(:name, :year_month, :value).merge(user_id: current_user.id)
    end
-  end
+  
 end

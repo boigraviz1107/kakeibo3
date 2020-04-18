@@ -5,6 +5,19 @@
 = link_to "topへ", :root
 %h3= "合計金額#{@goukei}円"
 
+%h4
+-@sums.each do |sum|
+  .contents
+    .contents_name
+      =sum
+    .contents_year_month
+      =sum.year_month
+    .contents_value
+      =sum.value
+ 
+    
+
+
 %h4 収入割合
 = pie_chart (@incomes_chart)
 
@@ -20,7 +33,7 @@
         %tr
           %td= income.name
           %td= income.year_month
-          %td= income.value
+          %td= income.sum
           %td
             = link_to "編集", [:edit, income]
             = link_to "削除", income, method: :delete
