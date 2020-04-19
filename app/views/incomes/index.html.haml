@@ -6,8 +6,14 @@
 %h3= "合計金額#{@goukei}円"
 
 %h4
-= @sums.each_with_index do |x, i|
-  = "#{i}: #{x}"
+- @sums = {}
+  -@incomes.each do |income|
+  - year_month = income.year_month.strftime('%Y-%m')
+    -unless @sums.has_key?(year_month)
+    - @sums[year_month] = 0
+    -@sums[year_month] += income[:value]
+- @sums.each do |k, v|
+  = "#{k}月: #{v}円"
 
 
  
