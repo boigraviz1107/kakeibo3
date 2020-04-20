@@ -1,22 +1,6 @@
-.header{
-     width:100%;
-     height: 100px;
-     background-color: gray;
-     display: flex;
-  }
-
-.header__left{
-;
- }
-
- .header__left_title{
-    font-size: 20px;
-    font-weight: bold;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
- }
-
-.header__right{
-   
- }
+#toggleMenu {
+    overflow: hidden;
+    transition: all 0.5s;
+    background-color: #eee;
+}
+    
