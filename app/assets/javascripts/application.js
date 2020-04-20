@@ -16,24 +16,3 @@
 //= require turbolinks
 //= require chartkick
 //= require Chart.bundle
-/**
- * アコーディオン
- *
- * @auther ao-system
- */
-(function(window,document){
-  var _toggleMenuButton = document.getElementById('toggleMenuButton');
-  var _toggleMenu = document.getElementById('toggleMenu');
-  var _clientH;
-   init();
-    function init() {
-      _toggleMenu.style.height = 'auto';
-      _clientH = _toggleMenu.clientHeight;
-      _toggleMenu.style.height = '0px';
-      _toggleMenuButton.addEventListener('click',function(){clickToggle();},false);
-  }
-   function clickToggle() {
-      var lastH = _toggleMenu.style.height;
-      _toggleMenu.style.height = (lastH == '' || lastH == '0px') ? _clientH + 'px' : '0px';
-  }
-})(window,document);

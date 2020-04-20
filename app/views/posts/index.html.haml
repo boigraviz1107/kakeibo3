@@ -1,19 +1,24 @@
 
 %h2= "残高#{@zanndaka}円"
-%h3 メニュー
 %ul
   %li= link_to "収入確認", :incomes
   %li= link_to "支出確認", :spendings
 
-
-
-
 %button#toggleMenuButton ボタン
-:javascript
-  $("#users").trigger("users:loaded");
-#toggleMenu
+#toggleMenu 
   %ul
     %li top
     %li about
     %li contact
-
+  :javascript
+    var _toggleMenuButton = document.getElementById('toggleMenuButton');
+    var _toggleMenu = document.getElementById('toggleMenu');
+    var _clientH;
+    console.log(_toggleMenuButton);
+    console.log(_toggleMenu)
+  :scss
+    #toggleMenu {
+          overflow: hidden;
+          transition: all 0.5s;
+            background-color: #eee;
+        }
