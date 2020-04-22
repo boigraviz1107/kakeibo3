@@ -1,24 +1,70 @@
 
-%h2= "残高#{@zanndaka}円"
-%ul
-  %li= link_to "収入確認", :incomes
-  %li= link_to "支出確認", :spendings
-
-%button#toggleMenuButton ボタン
+-# %h2= "残高#{@zanndaka}円"
+-# %ul
+-#   %li= link_to "収入確認", :incomes
+-#   %li= link_to "支出確認", :spendings
+.main
+%button#toggleMenuButton= "残高#{@zanndaka}円" 
 #toggleMenu 
   %ul
-    %li top
-    %li about
-    %li contact
+    %li= link_to "収入確認", :incomes, class:"li-1"
+    %li= link_to "支出確認", :spendings, class:"li-1"
   :javascript
     var _toggleMenuButton = document.getElementById('toggleMenuButton');
     var _toggleMenu = document.getElementById('toggleMenu');
     var _clientH;
     console.log(_toggleMenuButton);
     console.log(_toggleMenu)
+    init();
+    function init() {
+      _toggleMenu.style.height = 'auto';
+      _clientH = _toggleMenu.clientHeight;
+      _toggleMenu.style.height = '0px';
+      _toggleMenuButton.addEventListener('click',function(){clickToggle();},false);
+      }
+    function clickToggle() {
+      var lastH = _toggleMenu.style.height;
+      _toggleMenu.style.height = (lastH == '' || lastH == '0px') ? _clientH + 'px' : '0px';
+      }
   :scss
+    #toggleMenuButton{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    width: 300px;
+    height: 300px;
+    line-height: 120px;
+    border-radius: 50%;
+    text-align: center;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 40pt; 
+    background-image: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+    :active {
+    box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.32);
+    background-image: linear-gradient(#fed6e3 0%, #ffcfcf 100%);}
+    }
     #toggleMenu {
           overflow: hidden;
           transition: all 0.5s;
-            background-color: #eee;
+          background-color: #eee;
         }
+    .li-1 { display        : inline-block;
+            color          : #ffffff;            /* 文字の色 */
+            font-size      : 36pt;               /* 文字のサイズ */
+            letter-spacing : 4px;                /* 文字間 */
+            text-shadow    : 
+                2px  2px 1px #003366,
+                -2px  2px 1px #003366,
+                2px -2px 1px #003366,
+                -2px -2px 1px #003366,
+                2px  0px 1px #003366,
+                0px  2px 1px #003366,
+                -2px  0px 1px #003366,
+                0px -2px 1px #003366;        /* 文字の影 */
+
+
+          }
+  

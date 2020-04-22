@@ -1,26 +1,29 @@
-- @page_title = "収入科目一覧"
-%h1= @page_title
-= link_to "収入科目の新規登録", :new_income
+- @page_title = "収入一覧"
+%h1.title
+= @page_title
+.sinki
+= link_to "収入の新規登録", :new_income
 %h2
-= link_to "topへ", :root
+= link_to "topへ", :root, class:"top"
 %h3= "合計金額#{@goukei}円"
 
-%h4
-- @sums = {}
-  -@incomes.each do |income|
-  - year_month = income.year_month.strftime('%Y-%m')
-    -unless @sums.has_key?(year_month)
-    - @sums[year_month] = 0
-    -@sums[year_month] += income[:value]
-- @sums.each do |k, v|
-  = "#{k}月: #{v}円"
+-# %h4
+-# - @sums = {}
+-#   -@incomes.each do |income|
+-#   - year_month = income.year_month.strftime('%Y-%m')
+-#     -unless @sums.has_key?(year_month)
+-#     - @sums[year_month] = 0
+-#     -@sums[year_month] += income[:value]
+-# - @sums.each do |k, v|
+-#   = "#{k}月: #{v}円"
 
 
  
     
 
 
-%h4 収入割合
+%h4
+収入割合
 = pie_chart (@incomes_chart)
 
 - if @incomes.present?
