@@ -10,18 +10,8 @@
     = csrf_meta_tags
     %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}
     %link{:href => "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,500&display=swap", :rel => "stylesheet"}/
-
-  %body
-    %header.header
-      .header__left
-        .header__left_title
-          kakeibo
-        .header__left_memo
-          ひと月の収支確認ができるメモアプリです。
-      .header__right
-        - if user_signed_in?
-          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__right--btn"
-        - else
-      %div.main  
-    %footer
+    %body
+    = render '/layouts/header'
     = yield
+    = render '/layouts/footer'
+
