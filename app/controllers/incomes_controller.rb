@@ -2,8 +2,6 @@ class IncomesController < ApplicationController
   def index
     @incomes = Income.where(user_id: current_user.id).order(year_month: :asc)
     @goukei = @incomes.sum(:value)
-    @incomes_chart = @incomes.group(:name).sum(:value)
-    # @sums = @incomes.group("MONTH(created_at)").sum(:value)
    end
   
    def show

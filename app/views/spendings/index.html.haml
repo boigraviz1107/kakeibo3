@@ -9,6 +9,18 @@
 %h4 支出割合
 = pie_chart (@spendings_chart)
 
+%h5
+  -@sums = {}
+  -@spendings.each do |spending|
+    -year_month = spending.year_month.strftime('%Y-%m')
+    -unless @sums.has_key?(year_month)
+      -@sums[year_month] = 0
+    -@sums[year_month] += spending[:value]
+-@sums.each do |k, v|
+  = "#{k}月:合計金額 #{v}円"
+
+
+
 
 
 - if @spendings.present?

@@ -3,6 +3,7 @@ class SpendingsController < ApplicationController
     @spendings = Spending.where(user_id: current_user.id).order(year_month: :asc)
     @goukei = @spendings.sum(:value)
     @spendings_chart = @spendings.group(:name).sum(:value)
+
 	end
  
   def show
