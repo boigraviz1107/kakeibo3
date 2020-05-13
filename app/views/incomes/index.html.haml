@@ -1,13 +1,12 @@
 .income
   .income__head
-    収入一覧
+    =@user
+    様の収入一覧
     .income__head__contents
       .income__head__contents__new
         = link_to "収入の新規登録", :new_income
       .income__head__contents__top
         = link_to "topへ", :root, class:"top"
-      .income__head__contents__goukei
-        = "合計金額#{@goukei}円"
 
   .income__main
     -@sums = {}
@@ -22,9 +21,13 @@
       -@sums[year_month] += income[:value]
       -@pie_charts[year_month][income.name] += income.value
     .income__main__sum
+      月別集計
       -@pie_charts.each do |key, chart|
-        %p #{chart}
-        -chart.each do |c|
+        -sum = 0
+        -chart.each do |_, value|
+          -sum += value
+        %p 年月:#{key}月
+        %p 合計金額: #{sum} 円
         = pie_chart(chart)
 
 - if @incomes.present?
