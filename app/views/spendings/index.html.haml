@@ -1,13 +1,36 @@
-- @page_title = "支出一覧"
-%h1= @page_title
-= link_to "支出の新規登録", :new_spending
-%h2
-= link_to "topへ", :root
+.spending
+  .spendig__head
+    =@user
+    様の支出一覧
+    .spendig__head__contents
+      .spendig__head__contents__new
+        = link_to "支出の新規登録", :new_spending
+      .spendig__head__contents__top
+        = link_to "topへ", :root
 
-%h3= "合計金額#{@goukei}円"
+  .spending__main
+    -@sums = {}
+    -@pie_charts = {}
+    -@spendings.each do |spending|
+      -year_month = spending.year_month.strftime('%Y-%m')
+      -unless @sums.has_key?(year_month)
+        -@sums[year_month] = 0
+        -@pie_charts[year_month] = {}
+      -unless @pie_charts[year_month].has_key?(spending.name)
+        -@pie_charts[year_month][spending.name] = 0
+      -@sums[year_month] += spending[:value]
+      -@pie_charts[year_month][spending.name] += spending.value
+    .spending__main__sum
+      月別集計
+      -@pie_charts.each do |key, chart|
+        -sum = 0
+        -chart.each do |_, value|
+          -sum += value
+        %p 年月:#{key}月
+        %p 合計金額: #{sum} 円
+        = pie_chart(chart)
 
-%h4 支出割合
-= pie_chart (@spendings_chart)
+
 
 
 

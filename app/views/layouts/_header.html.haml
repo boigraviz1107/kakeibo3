@@ -1,3 +1,10 @@
 %header
-  .headerInner
-    aa
+  .header
+    .header__title
+      家計簿アプリ
+    .header__contents
+      月事の収入、支出、現在の残高がわかるメモアプリです。
+    .header__logout
+    - if user_signed_in?
+      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__name--btn"
+    - else
