@@ -2,6 +2,9 @@ class IncomesController < ApplicationController
   def index
     @incomes = Income.where(user_id: current_user.id).order(year_month: :DESC)
     @goukei = @incomes.sum(:value)
+    @kongetunoincomes = @incomes.where(year_month: Time.now.all_month).all.sum(:value)
+    d = Date.today
+    @month = d.month
     @user = current_user.name
    end
   

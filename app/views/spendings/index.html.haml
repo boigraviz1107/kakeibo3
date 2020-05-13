@@ -1,7 +1,6 @@
 .spending
   .spendig__head
-    =@user
-    様の支出一覧
+    ="#{@user}様の#{@month}月の支出：#{@kongetunospendings}円"
     .spendig__head__contents
       .spendig__head__contents__new
         = link_to "支出の新規登録", :new_spending
