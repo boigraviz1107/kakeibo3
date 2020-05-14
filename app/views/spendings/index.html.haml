@@ -1,6 +1,6 @@
 .spending
   .spending__head
-    ="#{@user}様の#{@month}月の支出：#{@kongetunospendings}円"
+    ="#{@user}様の#{@month}月の支出：#{@kongetunospendings.to_s(:delimited)}円"
   .spending__contents
     .spending__contents__new
       = link_to "支出の新規登録", :new_spending
@@ -31,7 +31,7 @@
           -chart.each do |_, value|
             -sum += value
           %p 年月:#{key}
-          %p 合計金額: #{sum} 円
+          %p 合計金額: #{sum.to_s(:delimited)} 円
           = pie_chart(chart)
           %table
             %thead
@@ -45,7 +45,7 @@
                 %tr
                   %td= data.name
                   %td= data.year_month.strftime('%Y年%m月%d日')
-                  %td= data.value
+                  %td= data.value.to_s(:delimited)
                   %td
                     = link_to "編集", [:edit, data]
                     = link_to "削除", data, method: :delete

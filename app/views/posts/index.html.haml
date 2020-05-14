@@ -1,8 +1,8 @@
 .main
   .main__zandaka
-    ="#{@user}  様の残高：#{@allzandaka}円"
+    ="#{@user}  様の残高：#{@allzandaka.to_s(:delimited)}円"
   .main__konngetunozandaka
-    ="#{@user}  様の#{@month}月の収支金額：#{@zanndaka}円"
+    ="#{@user}  様の#{@month}月の収支金額：#{@zanndaka.to_s(:delimited)}円"
   .main__contents
     .main__contents__income
       =link_to "収入確認", :incomes

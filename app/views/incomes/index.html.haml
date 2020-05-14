@@ -1,6 +1,6 @@
 .income
   .income__head
-    ="#{@user}様の#{@month}月の収入：#{@kongetunoincomes}円"
+    ="#{@user}様の#{@month}月の収入：#{@kongetunoincomes.to_s(:delimited)}円"
   .income__contents
     .income__contents__new
       = link_to "収入の新規登録", :new_income
@@ -32,7 +32,7 @@
           -chart.each do |_, value|
             -sum += value
           %p 年月:#{key}
-          %p 合計金額: #{sum} 円
+          %p 合計金額: #{sum.to_s(:delimited)} 円
           = pie_chart(chart)
           %table
             %thead
@@ -46,7 +46,7 @@
                 %tr
                   %td= data.name
                   %td= data.year_month.strftime('%Y年%m月%d日')
-                  %td= data.value
+                  %td= data.value.to_s(:delimited)
                   %td
                     = link_to "編集", [:edit, data]
                     = link_to "削除", data, method: :delete
