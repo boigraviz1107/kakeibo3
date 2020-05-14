@@ -1,16 +1,39 @@
 .header{
-  height: 200px;
+  height: 250px;
   width: 100%;
+  border: bottom 2px;
+  border: 1px solid #ccc;
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
   &__title{
   text-align: center;
   font-size: 80px;
   margin-bottom: 20px;
+
   }
   &__contents{
     text-align: center;
   }
-  &__name{
-    text-align: right;
-    margin-right: 30px;
+  &__logout{
+    &__btn{
+      float:right;
+      margin-right: 60px;
+      background-color: palevioletred;
+      border: 1px solid palevioletred;
+      color: #fff;
+      display: block;
+      width: 10%;
+      line-height: 48px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      -webkit-transition: all ease-out .3s;
+      transition: all ease-out .3s;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+        opacity: .7;
+      }
+    }
   }
 }

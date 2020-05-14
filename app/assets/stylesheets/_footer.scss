@@ -1,7 +1,14 @@
 .footer{
-  height: 80px;
+  height: 100px;
   width: 100%;
-  &__contents{
-    text-align: center;
+  border: bottom 2px;
+  border: 1px solid #ccc;
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  text-align: center;
+  &__contennts{   
+    font-size: 30px;
   }
-}
+  &__day{
+    font-size: 30px;
+  }
+  }
