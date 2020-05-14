@@ -61,3 +61,5 @@ gem 'gon'
 gem 'c3-rails'
 gem 'd3-rails', '~> 3.5.17'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'rspec-rails'
+gem 'factory_bot_rails'
