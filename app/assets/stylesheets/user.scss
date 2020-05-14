@@ -45,6 +45,11 @@
       color: #fff;
       background-color: palevioletred;
       font-size: 14px;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+        opacity: .7;
+      }
     }
   }
 
@@ -80,6 +85,11 @@
     text-align: center;
     border: none;
     border-radius: 2px;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+      opacity: .7;
+    }
   }
 
   input[type='submit'] {
