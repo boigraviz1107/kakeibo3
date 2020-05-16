@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: kakeibo3_production
-  username: kakeibo3
-  password: <%= ENV['KAKEIBO3_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
