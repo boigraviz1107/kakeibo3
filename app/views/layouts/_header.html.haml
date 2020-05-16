@@ -3,8 +3,7 @@
     .header__title
       KAKEIBO
     .header__contents
-      %h2 月ごとの収入、支出、今月の収支金額、全体の残高がわかる家計簿アプリです。
-      %p *採用担当の方はこちらでログインできます。email: test1@gmail.com   password:12345678
+      月ごとの収入、支出、今月の収支金額、全体の残高がわかる家計簿アプリです。
     .header__logout
     - if user_signed_in?
       = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__logout__btn"

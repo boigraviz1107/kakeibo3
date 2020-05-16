@@ -3,6 +3,9 @@
     .account-page__inner--left.account-page__header
       %h2 Log in
       %h5 登録しているユーザーでログイン
+      %p 採用担当の方はこちらでログインできます。
+      %p email: test1@gmail.com
+      %p password: 12345678
       = render "devise/shared/links"
     .account-page__inner--right.user-form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
